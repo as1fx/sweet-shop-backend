@@ -1,5 +1,7 @@
-package com.asif.sweet_shop_backend;
+package com.asif.sweet_shop_backend.Service;
 
+import com.asif.sweet_shop_backend.Entity.User;
+import com.asif.sweet_shop_backend.Repo.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service

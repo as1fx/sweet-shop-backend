@@ -1,5 +1,6 @@
-package com.asif.sweet_shop_backend;
+package com.asif.sweet_shop_backend.Controller;
 
+import com.asif.sweet_shop_backend.Service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

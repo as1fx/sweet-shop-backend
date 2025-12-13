@@ -1,4 +1,4 @@
-package com.asif.sweet_shop_backend;
+package com.asif.sweet_shop_backend.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
