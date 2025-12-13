@@ -1,4 +1,4 @@
-package com.example.sweetshop.inventory;
+package com.asif.sweet_shop_backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
