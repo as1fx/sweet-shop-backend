@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.crypto.SecretKey;
 import java.security.Key;
@@ -11,7 +12,8 @@ import java.util.Date;
 
 public class JwtUtil {
 
-    private static final String SECRET_STRING = "LNB1LuIZZ8v30JaG0uZQvnsh85QG5BoSUmOy6tzuWao";
+
+    private static final String SECRET_STRING = System.getenv("JWT_SECRET_KEY");
     private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_STRING));
     private static final long EXPIRATION_TIME = 3600000;
 
