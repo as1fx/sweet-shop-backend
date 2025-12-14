@@ -12,7 +12,7 @@ import java.util.Date;
 public class JwtUtil {
 
     private static final String SECRET_STRING = "LNB1LuIZZ8v30JaG0uZQvnsh85QG5BoSUmOy6tzuWao";
-    private static final Key SECRET_KEY = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_STRING));
+    private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_STRING));
     private static final long EXPIRATION_TIME = 3600000;
 
     public static String generateToken(String email, boolean admin) {
@@ -28,30 +28,12 @@ public class JwtUtil {
     public static boolean validateToken(String token) {
         try {
             Jwts.parser()
-                    .verifyWith((SecretKey) SECRET_KEY)
+                    .verifyWith(SECRET_KEY)
                     .build()
                     .parseSignedClaims(token);
             return true;
         } catch (Exception e) {
             return false;
         }
-    }
-
-    public static String extractEmail(String token) {
-        Claims claims = Jwts.parser()
-                .verifyWith((SecretKey) SECRET_KEY)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
-        return claims.getSubject();
-    }
-
-    public static boolean isAdmin(String token) {
-        Claims claims = Jwts.parser()
-                .verifyWith((SecretKey) SECRET_KEY)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
-        return claims.get("admin", Boolean.class);
     }
 }
