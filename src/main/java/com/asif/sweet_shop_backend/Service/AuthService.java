@@ -2,6 +2,7 @@ package com.asif.sweet_shop_backend.Service;
 
 import com.asif.sweet_shop_backend.Entity.User;
 import com.asif.sweet_shop_backend.Repo.UserRepository;
+import com.asif.sweet_shop_backend.Security.JwtUtil;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +23,7 @@ public class AuthService {
         userRepository.save(user);
     }
     public String login(String email, String password){
-        return "token";
+        User user = userRepository.findByEmail(email).orElseThrow();
+        return JwtUtil.generateToken(user.getEmail(), user.isAdmin());
     }
 }
